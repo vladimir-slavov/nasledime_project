@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>It Works!</title>
-    {{ csrf_token }}
-    {{ form }}
-</head>
-<body>
+{% extends 'shared/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <form style="border: 1px solid grey; margin: 10% 0%; padding: 7% 3%" method="post">
+            <h2>Регистрация</h2>
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-primary" type="submit">Регистрирай се</button>
+            <span>Вече сте регистриран?<a style="color:blue" href="{% url 'login user' %}" class="btn">Вход</a></span>
+    </form>
+{% endblock %}
