@@ -1,0 +1,11 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <form style="border: 1px solid grey; margin: 10% 0%; padding: 7% 3%" method="post">
+            <h2>Моля, въведете Вашите данни</h2>
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-primary" type="submit">Влез</button>
+            <span>Нямате акаунт?<a style="color:blue" href="{% url 'register user' %}" class="btn"> Регистрирайте се</a></span>
+    </form>
+{% endblock %}
