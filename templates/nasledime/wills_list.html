@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1 style="border: 1px solid grey; margin: 2% 0%; padding: 4% 2%" class='text-center'>Всички завещания</h1>
+    <div class="row">
+        {% for will in wills %}
+            <div class="col-lg-4">
+                <div style="margin: 5%; width: 18rem;" class="card">
+                    <h5 style="padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px"
+                        class="card-title"> Завещание на {{ will.first_name }} {{ will.last_name }},
+                        съставено на {{ will.date_created }}</h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ will.text|truncatechars:70 }}</p>
+                        <a style="margin: 2%" href="{% url 'will details' will.id %}" class="btn btn-primary">Към завещанието</a>
+                        <a style="margin: 2%" href="{% url 'edit will' will.id %}" class="btn btn-warning">Промени завещанието</a>
+                        <a style="margin: 2%" href="{% url 'delete will' will.id %}" class="btn btn-danger">Изтрий завещанието</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    {% if is_paginated %}
+        <div style="padding: 5% 5%" class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/all-wills?page={{ page_obj.previous_page_number }}">предишна страница</a>
+                {% endif %}
+                <span class="page-current">
+                    Стр. {{ page_obj.number }} от {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/all-wills?page={{ page_obj.next_page_number }}">следваща страница</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+{% endblock %}

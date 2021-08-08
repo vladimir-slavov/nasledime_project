@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <div class="card-body">
+    <form method="post">
+        {% csrf_token %}
+    <h5 style="margin: 3% 0%; padding: 6% 1%" class="text-warning">
+        Сигурни ли сте, че искате да изтриете завещанието?</h5>
+    <input style="margin: 1%; padding-right: 20px" class="btn btn-primary" type="submit" value="Да">
+    </form>
+    <a style="margin: 1%; padding-right: 20px" href="{% url 'wills list' %}" class="btn btn-secondary">Не</a>
+    <div/>
+{% endblock %}

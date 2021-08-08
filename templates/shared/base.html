@@ -6,13 +6,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Amoeba Bootstrap Template - Home</title>
+  <title>NASLEDIME</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+{#  <!-- Favicons -->#}
+{#  <link href="assets/img/favicon.png" rel="icon">#}
+{#  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">#}
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
@@ -41,7 +41,7 @@
     <div class="container d-flex align-items-center">
 
       <div class="logo me-auto">
-        <h1><a>NASLEDIME.COM</a></h1>
+        <h1><a href="{% url 'index' %}">NASLEDIME.COM </a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -49,14 +49,14 @@
       <nav id="navbar" class="navbar">
         <ul>
             {% if request.user.is_authenticated %}
-          <li><a class="nav-link">Здравей, {{ user.email }}</a></li>
+          <li><a class="nav-link">Здравей, {{ user.email|truncatechars:20 }}</a></li>
             {% endif %}
-          <li><a class="nav-link" href="#hero">Направи завещание</a></li>
+          <li><a class="nav-link" href="{% url 'create will' %}">Направи завещание</a></li>
             {% if request.user.is_authenticated %}
-          <li><a class="nav-link scrollto" href="#about">Всички завещания</a></li>
+          <li><a class="nav-link" href="{% url 'wills list' %}">Всички завещания</a></li>
             {% endif %}
           <li><a class="nav-link scrollto" href="#services">За проекта</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Как работят завещанията</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'how wills work' %}">Как работят завещанията</a></li>
           <li><a class="nav-link scrollto" href="#team">За нас</a></li>
             {% if request.user.is_authenticated %}
           <li><a class="nav-link scrollto" href="{% url 'logout' %}">Изход</a></li>
@@ -90,7 +90,7 @@
     </div>
   </footer><!-- End #footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+{#  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>#}
 
   <!-- Vendor JS Files -->
 {#  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>#}

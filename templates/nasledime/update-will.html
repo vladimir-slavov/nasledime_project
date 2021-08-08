@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <form style="border: 1px solid grey; margin: 10% 0%; padding: 7% 3%" method="post">
+        {% csrf_token %}
+        <ul>
+            {{ form.as_p }}
+        </ul>
+        <input class="btn btn-primary" type="submit" value="Промени завещанието">
+    </form>
+
+{% endblock %}

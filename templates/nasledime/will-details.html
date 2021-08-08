@@ -1,4 +1,21 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
+    <h2 style="border: 1px black; margin: 2%; padding: 4% 2%" class='text-center'>САМОРЪЧНО ЗАВЕЩАНИЕ</h2>
+    <h3 style="margin: 2%" class='text'>Аз, долуподписаният/та,</h3>
+    <p style="margin: 2%" class='text'>{{ will.first_name }} {{ will.last_name }},
+        с ЕГН: {{ will.uic }}, с адрес {{ will.address }} </p>
+    <h5 style="margin: 2%" class='text'>ПРАВЯ СЛЕДНОТО ЗАВЕЩАНИЕ</h5>
+    <p style="margin: 2%" class='text'> {{ will.text }}</p>
+    <p style="margin: 2%" class='text'>Подпис: ..............&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        Дата: {% now "SHORT_DATE_FORMAT" %}</p>
+    <p style="margin: 2%" class="text-warning">ВНИМАНИЕ!!! Съгласно чл. 25, ал. 1 от Закона за наследството, за да бъде
+    завещанието действително, то трябва да бъде изписано саморъчно от завещателя.
+        Свободни сте да правите с настоящия текст, каквото намерите за добре, но не забравяйте да го препишете,
+    ако искате да произведе целения ефект.</p>
+
 {% endblock %}

@@ -17,3 +17,12 @@ class NasledimeUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
     objects = NasledimeUserManager()
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        NasledimeUser,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+
