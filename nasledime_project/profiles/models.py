@@ -18,6 +18,14 @@ class NasledimeUser(AbstractBaseUser, PermissionsMixin):
 
     objects = NasledimeUserManager()
 
+    class Meta:
+        permissions = (
+            ('add_will', 'can_add_will'),
+            ('change_will', 'can_change_will'),
+            ('delete_will', 'can_delete_will'),
+            ('view_will', 'can_view_will'),
+        )
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
