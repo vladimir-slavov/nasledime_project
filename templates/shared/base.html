@@ -55,9 +55,8 @@
             {% if request.user.is_authenticated %}
           <li><a class="nav-link" href="{% url 'wills list' %}">Всички завещания</a></li>
             {% endif %}
-          <li><a class="nav-link scrollto" href="#services">За проекта</a></li>
           <li><a class="nav-link scrollto" href="{% url 'how wills work' %}">Как работят завещанията</a></li>
-          <li><a class="nav-link scrollto" href="#team">За нас</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about the project' %}">За проекта</a></li>
             {% if request.user.is_authenticated %}
           <li><a class="nav-link scrollto" href="{% url 'logout' %}">Изход</a></li>
             {% else %}

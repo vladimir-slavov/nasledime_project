@@ -17,7 +17,7 @@ class WillsTestCase(TestCase):
         user.save()
         self.client.login(email='testemail@abv.bg', password='MyTestPassword4321')
 
-    def test_publish_will(self):
+    def test_create_will(self):
         data = {
             'id': 1,
             'first_name': "Somefirstname",

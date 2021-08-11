@@ -1,6 +1,9 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
+    {% if not wills.exists %}
+    <h1 style="color: grey; margin: 20% 30% 20% 38%">Нямате завещания</h1>
+    {% else %}
     <h1 style="border: 1px solid grey; margin: 2% 0%; padding: 4% 2%" class='text-center'>Всички завещания</h1>
     <div class="row">
         {% for will in wills %}
@@ -19,6 +22,7 @@
             </div>
 
         {% endfor %}
+    {% endif %}
 
     {% if is_paginated %}
         <div style="padding: 5% 5%" class="pagination">

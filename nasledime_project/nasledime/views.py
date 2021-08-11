@@ -11,6 +11,10 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
+class AboutTheProjectView(TemplateView):
+    template_name = 'nasledime/about-the-project.html'
+
+
 class HowWillsWorkView(TemplateView):
     template_name = 'nasledime/how-wills-work.html'
 
@@ -75,6 +79,7 @@ class ListAllWillsView(LoginRequiredMixin, ListView):
     context_object_name = 'wills'
     model = Will
     paginate_by = 3
+    login_url = '/profile/login/'
 
     # def get_context_data(self, **kwargs):
     #     context = super(ListAllWillsView, self).get_context_data(**kwargs)
@@ -95,4 +100,4 @@ class WillDetailView(LoginRequiredMixin, DetailView):
     template_name = 'nasledime/will-details.html'
     context_object_name = 'will'
     model = Will
-
+    login_url = '/profile/login/'

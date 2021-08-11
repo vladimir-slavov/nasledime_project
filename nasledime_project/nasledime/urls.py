@@ -2,10 +2,11 @@ from django.urls import path
 
 from nasledime_project.nasledime import views
 from nasledime_project.nasledime.views import IndexView, CreateWill, \
-    HowWillsWorkView, ListAllWillsView, WillDetailView, EditWillView, DeleteWillView
+    HowWillsWorkView, ListAllWillsView, WillDetailView, EditWillView, DeleteWillView, AboutTheProjectView
 
 urlpatterns = (
     path('', IndexView.as_view(), name='index'),
+    path('about-the-project/', AboutTheProjectView.as_view(), name='about the project'),
     path('how-wills-work/', HowWillsWorkView.as_view(), name='how wills work'),
     path('create-will/', CreateWill.as_view(), name='create will'),
     path('update-will/<int:pk>/', EditWillView.as_view(), name='edit will'),
