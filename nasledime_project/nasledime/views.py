@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, \
     DetailView, UpdateView, DeleteView
@@ -66,12 +67,36 @@ class EditWillView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('wills list')
     login_url = '/profile/login/'
 
+    """
+    If the user tries to access a Will object that does not belong to
+    him/her, he/she will get an HttpResponse explaining that he/she
+    does not have the right to access said will.
+    """
+    def get(self, *args, **kwargs):
+        if self.request.user != self.get_object().user:
+            return HttpResponse(
+                'Нямате право да достъпите това завещание.'
+            )
+        return super(EditWillView, self).get(*args, **kwargs)
+
 
 class DeleteWillView(LoginRequiredMixin, DeleteView):
     model = Will
     template_name = 'nasledime/delete-will.html'
     success_url = reverse_lazy('wills list')
     login_url = '/profile/login/'
+
+    """
+    If the user tries to access a Will object that does not belong to
+    him/her, he/she will get an HttpResponse explaining that he/she
+    does not have the right to access said will.
+    """
+    def get(self, *args, **kwargs):
+        if self.request.user != self.get_object().user:
+            return HttpResponse(
+                'Нямате право да достъпите това завещание.'
+            )
+        return super(DeleteWillView, self).get(*args, **kwargs)
 
 
 class ListAllWillsView(LoginRequiredMixin, ListView):
@@ -101,3 +126,15 @@ class WillDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'will'
     model = Will
     login_url = '/profile/login/'
+
+    """
+    If the user tries to access a Will object that does not belong to
+    him/her, he/she will get an HttpResponse explaining that he/she
+    does not have the right to access said will.
+    """
+    def get(self, *args, **kwargs):
+        if self.request.user != self.get_object().user:
+            return HttpResponse(
+                'Нямате право да достъпите това завещание.'
+            )
+        return super(WillDetailView, self).get(*args, **kwargs)

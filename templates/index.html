@@ -6,7 +6,7 @@
       <h1>Добре дошли в NASLEDIME.COM</h1>
       <h2>Използвайте нашия интуитивен уебсайт, за да съставите и пазите Вашите завещания. Безплатно!</h2>
         {% if not request.user.is_authenticated %}
-      <a href="{% url 'register user' %}" class="btn-get-started">Начало</a>
+      <a href="{% url 'register user' %}" class="btn-get-started">Регистрирай се</a>
         {% endif %}
     </div>
   </section><!-- #hero -->
