@@ -11,7 +11,7 @@
                 <div style="margin: 5%; width: 18rem;" class="card">
                     <h5 style="padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px"
                         class="card-title"> Завещание на {{ will.first_name }} {{ will.last_name }},
-                        съставено на {{ will.date_created }}</h5>
+                        съставено на {{ will.date_created|date:"d.m.Y" }} г.</h5>
                     <div class="card-body">
                         <p class="card-text">{{ will.text|truncatechars:70 }}</p>
                         <a style="margin: 2%" href="{% url 'will details' will.id %}" class="btn btn-primary">Към завещанието</a>
@@ -22,6 +22,7 @@
             </div>
 
         {% endfor %}
+    </div>
     {% endif %}
 
     {% if is_paginated %}
